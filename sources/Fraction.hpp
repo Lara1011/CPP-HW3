@@ -14,11 +14,18 @@ using namespace std;
 namespace ariel {
     class Fraction {
     private:
-        int a;
-        int b;
-        void reduce;
+        int numerator;
+        int denominator;
     public:
-
+        Fraction();
+        Fraction(int numerator);
+        Fraction(double x);
+        Fraction(int numerator, int denominator);
+        int getNumerator();
+        void setNumerator();
+        int getDenominator();
+        void setDenominator();
+        operator string() const;
     };
 }
 
