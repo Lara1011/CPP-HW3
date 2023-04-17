@@ -29,11 +29,36 @@ namespace ariel {
         int getDenominator();
         void setDenominator();
 
+        friend Fraction operator+(const Fraction& left,const Fraction& right);
+        friend Fraction operator-(const Fraction& left,const Fraction& right);
+        friend Fraction operator*(const Fraction& left,const Fraction& right);
+        friend Fraction operator/(const Fraction& left,const Fraction& right);
 
-        friend Fraction operator+(const Fraction& left, const Fraction& right);
-        friend Fraction operator-(const Fraction& left, const Fraction& right);
-        friend Fraction operator*(const Fraction& left, const Fraction& right);
-        friend Fraction operator/(const Fraction& left, const Fraction& right);
+        template <typename T>
+        friend Fraction operator+(const Fraction& frac, const T& type);
+        template <typename T>
+        friend Fraction operator-(const Fraction& frac, const T& type);
+        template <typename T>
+        friend Fraction operator*(const Fraction& frac, const T& type);
+        template <typename T>
+        friend Fraction operator/(const Fraction& frac, const T& type);
+
+        template <typename T>
+        friend Fraction operator+(const T& type, const Fraction& frac);
+        template <typename T>
+        friend Fraction operator-(const T& type, const Fraction& frac);
+        template <typename T>
+        friend Fraction operator*(const T& type, const Fraction& frac);
+        template <typename T>
+        friend Fraction operator/(const T& type, const Fraction& frac);
+
+
+
+
+//        friend Fraction operator+(const Fraction& left, const Fraction& right);
+//        friend Fraction operator-(const Fraction& left, const Fraction& right);
+//        friend Fraction operator*(const Fraction& left, const Fraction& right);
+//        friend Fraction operator/(const Fraction& left, const Fraction& right);
 
 //        Fraction operator+(const double& d);
 //        Fraction operator-(const double& d);
@@ -45,25 +70,25 @@ namespace ariel {
 //        Fraction operator*(const int& i);
 //        Fraction operator/(const int& i);
 
-        friend Fraction operator+(const double& d, const Fraction& frac);
-        friend Fraction operator-(const double& d, const Fraction& frac);
-        friend Fraction operator*(const double& d, const Fraction& frac);
-        friend Fraction operator/(const double& d, const Fraction& frac);
-
-        friend Fraction operator+(const int& i, const Fraction& frac);
-        friend Fraction operator-(const int& i, const Fraction& frac);
-        friend Fraction operator*(const int& i, const Fraction& frac);
-        friend Fraction operator/(const int& i, const Fraction& frac);
-
-        friend Fraction operator+(const Fraction& frac, const double& d);
-        friend Fraction operator-(const Fraction& frac, const double& d);
-        friend Fraction operator*(const Fraction& frac, const double& d);
-        friend Fraction operator/(const Fraction& frac, const double& d);
-
-        friend Fraction operator+(const Fraction& frac, const int& i);
-        friend Fraction operator-(const Fraction& frac, const int& i);
-        friend Fraction operator*(const Fraction& frac, const int& i);
-        friend Fraction operator/(const Fraction& frac, const int& i);
+//        friend Fraction operator+(const double& d, const Fraction& frac);
+//        friend Fraction operator-(const double& d, const Fraction& frac);
+//        friend Fraction operator*(const double& d, const Fraction& frac);
+//        friend Fraction operator/(const double& d, const Fraction& frac);
+//
+//        friend Fraction operator+(const int& i, const Fraction& frac);
+//        friend Fraction operator-(const int& i, const Fraction& frac);
+//        friend Fraction operator*(const int& i, const Fraction& frac);
+//        friend Fraction operator/(const int& i, const Fraction& frac);
+//
+//        friend Fraction operator+(const Fraction& frac, const double& d);
+//        friend Fraction operator-(const Fraction& frac, const double& d);
+//        friend Fraction operator*(const Fraction& frac, const double& d);
+//        friend Fraction operator/(const Fraction& frac, const double& d);
+//
+//        friend Fraction operator+(const Fraction& frac, const int& i);
+//        friend Fraction operator-(const Fraction& frac, const int& i);
+//        friend Fraction operator*(const Fraction& frac, const int& i);
+//        friend Fraction operator/(const Fraction& frac, const int& i);
 
 //        bool operator>(const Fraction& frac) const;
 //        bool operator<(const Fraction& frac) const;
@@ -72,33 +97,33 @@ namespace ariel {
 //        bool operator>=(const Fraction& frac) const;
 //        bool operator<=(const Fraction& frac) const;
 
-        friend bool operator>(const double& d, const Fraction& frac);
-        friend bool operator<(const double& d, const Fraction& frac);
-        friend bool operator==(const double& d, const Fraction& frac);
-        friend bool operator!=(const double& d, const Fraction& frac);
-        friend bool operator>=(const double& d, const Fraction& frac);
-        friend bool operator<=(const double& d, const Fraction& frac);
-
-        friend bool operator>(const int& i, const Fraction& frac);
-        friend bool operator<(const int& i, const Fraction& frac);
-        friend bool operator==(const int& i, const Fraction& frac);
-        friend bool operator!=(const int& i, const Fraction& frac);
-        friend bool operator>=(const int& i, const Fraction& frac);
-        friend bool operator<=(const int& i, const Fraction& frac);
-
-        friend bool operator>(const Fraction& frac, const double& d);
-        friend bool operator<(const Fraction& frac, const double& d);
-        friend bool operator==(const Fraction& frac, const double& d);
-        friend bool operator!=(const Fraction& frac, const double& d);
-        friend bool operator>=(const Fraction& frac, const double& d);
-        friend bool operator<=(const Fraction& frac, const double& d);
-
-        friend bool operator>(const Fraction& frac, const int& i);
-        friend bool operator<(const Fraction& frac, const int& i);
-        friend bool operator==(const Fraction& frac, const int& i);
-        friend bool operator!=(const Fraction& frac, const int& i);
-        friend bool operator>=(const Fraction& frac, const int& i);
-        friend bool operator<=(const Fraction& frac, const int& i);
+//        friend bool operator>(const double& d, const Fraction& frac);
+//        friend bool operator<(const double& d, const Fraction& frac);
+//        friend bool operator==(const double& d, const Fraction& frac);
+//        friend bool operator!=(const double& d, const Fraction& frac);
+//        friend bool operator>=(const double& d, const Fraction& frac);
+//        friend bool operator<=(const double& d, const Fraction& frac);
+//
+//        friend bool operator>(const int& i, const Fraction& frac);
+//        friend bool operator<(const int& i, const Fraction& frac);
+//        friend bool operator==(const int& i, const Fraction& frac);
+//        friend bool operator!=(const int& i, const Fraction& frac);
+//        friend bool operator>=(const int& i, const Fraction& frac);
+//        friend bool operator<=(const int& i, const Fraction& frac);
+//
+//        friend bool operator>(const Fraction& frac, const double& d);
+//        friend bool operator<(const Fraction& frac, const double& d);
+//        friend bool operator==(const Fraction& frac, const double& d);
+//        friend bool operator!=(const Fraction& frac, const double& d);
+//        friend bool operator>=(const Fraction& frac, const double& d);
+//        friend bool operator<=(const Fraction& frac, const double& d);
+//
+//        friend bool operator>(const Fraction& frac, const int& i);
+//        friend bool operator<(const Fraction& frac, const int& i);
+//        friend bool operator==(const Fraction& frac, const int& i);
+//        friend bool operator!=(const Fraction& frac, const int& i);
+//        friend bool operator>=(const Fraction& frac, const int& i);
+//        friend bool operator<=(const Fraction& frac, const int& i);
 
         friend bool operator>(const Fraction& left, const Fraction& right);
         friend bool operator<(const Fraction& left, const Fraction& right);
@@ -106,6 +131,32 @@ namespace ariel {
         friend bool operator!=(const Fraction& left, const Fraction& right);
         friend bool operator>=(const Fraction& left, const Fraction& right);
         friend bool operator<=(const Fraction& left, const Fraction& right);
+
+        template <typename T>
+        friend bool operator>(const Fraction& frac, const T& type);
+        template <typename T>
+        friend bool operator<(const Fraction& frac, const T& type);
+        template <typename T>
+        friend bool operator==(const Fraction& frac, const T& type);
+        template <typename T>
+        friend bool operator!=(const Fraction& frac, const T& type);
+        template <typename T>
+        friend bool operator>=(const Fraction& frac, const T& type);
+        template <typename T>
+        friend bool operator<=(const Fraction& frac, const T& type);
+
+        template <typename T>
+        friend bool operator>(const T& type, const Fraction& frac);
+        template <typename T>
+        friend bool operator<(const T& type, const Fraction& frac);
+        template <typename T>
+        friend bool operator==(const T& type, const Fraction& frac);
+        template <typename T>
+        friend bool operator!=(const T& type, const Fraction& frac);
+        template <typename T>
+        friend bool operator>=(const T& type, const Fraction& frac);
+        template <typename T>
+        friend bool operator<=(const T& type, const Fraction& frac);
 
         Fraction operator++();
         Fraction operator++(int);

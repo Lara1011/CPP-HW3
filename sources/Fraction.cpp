@@ -19,6 +19,7 @@ namespace ariel{
             numerator = numerator*10 + int(x);
             x = (x - int(x)) * 10;
         }
+        reduce();
     }
 
     Fraction::Fraction(int numerator, int denominator): numerator(numerator), denominator(denominator) {
