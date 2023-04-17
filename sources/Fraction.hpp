@@ -159,9 +159,9 @@ namespace ariel {
         friend bool operator<=(const T& type, const Fraction& frac);
 
         Fraction operator++();
-        Fraction operator++(int);
+        const Fraction operator++(int);
         Fraction operator--();
-        Fraction operator--(int);
+        const Fraction operator--(int);
 
         friend ostream& operator<<(ostream& out, const Fraction& frac);
         friend istream& operator>>(istream& in, Fraction& frac);

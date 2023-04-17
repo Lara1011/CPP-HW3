@@ -337,7 +337,47 @@ namespace ariel{
         return i <= frac.operator double();
     }
 
+    Fraction Fraction::operator++() {
+        numerator += denominator;
+        reduce();
+        return *this;
+    }
 
+    const Fraction Fraction::operator++(int) {
+        Fraction temp = *this;
+        numerator += denominator;
+        reduce();
+        return temp;
+    }
+
+    Fraction Fraction::operator--() {
+        numerator -= denominator;
+        reduce();
+        return *this;
+    }
+
+    const Fraction Fraction::operator--(int) {
+        Fraction temp = *this;
+        numerator -= denominator;
+        reduce();
+        return temp;
+    }
+
+    ostream& operator<<(ostream& out, const Fraction& frac){
+        out << frac.numerator << "/" << frac.denominator;
+        return out;
+    }
+
+    istream& operator>>(istream& in, Fraction& frac){
+        int numerator, denominator;
+        char slash;
+        in >> numerator >> slash >> denominator;
+        if(slash != '/')
+            throw invalid_argument("Invalid input");
+        if(in)
+            frac = Fraction(numerator, denominator);
+        return in;
+    }
 
     Fraction::operator double() const {
         return double(numerator) / double(denominator);
