@@ -37,13 +37,29 @@ namespace ariel{
         denominator /= gcd;
     }
 
+    int Fraction::getDenominator() {
+        return this->denominator;
+    }
+
+    int Fraction::getNumerator() {
+        return this->numerator;
+    }
+
+    void Fraction::setDenominator(int d) {
+        this->denominator = d;
+    }
+
+    void Fraction::setNumerator(int n) {
+        this->numerator = n;
+    }
+
     Fraction operator+(const Fraction& left, const Fraction& right) {
         int numer = (left.numerator * right.denominator) + (right.numerator * left.denominator);
         int denom = left.denominator * right.denominator;
         int gcd = Fraction::gcd(numer, denom);
         numer /= gcd;
         denom /= gcd;
-        return Fraction(numer, denom);
+        return {numer, denom};
     }
 
     Fraction operator-(const Fraction& left, const Fraction& right) {
@@ -52,7 +68,7 @@ namespace ariel{
         int gcd = Fraction::gcd(numer, denom);
         numer /= gcd;
         denom /= gcd;
-        return Fraction(numer, denom);
+        return {numer, denom};
     }
 
     Fraction operator*(const Fraction& left, const Fraction& right) {
@@ -61,7 +77,7 @@ namespace ariel{
         int gcd = Fraction::gcd(numer, denom);
         numer /= gcd;
         denom /= gcd;
-        return Fraction(numer, denom);
+        return {numer, denom};
     }
 
     Fraction operator/(const Fraction& left, const Fraction& right) {
@@ -70,40 +86,8 @@ namespace ariel{
         int gcd = Fraction::gcd(numer, denom);
         numer /= gcd;
         denom /= gcd;
-        return Fraction(numer, denom);
+        return {numer, denom};
     }
-
-//    Fraction Fraction::operator+(const double &d) {
-//        return Fraction(*this + d);
-//    }
-//
-//    Fraction Fraction::operator-(const double &d) {
-//        return Fraction(*this - d);
-//    }
-//
-//    Fraction Fraction::operator*(const double &d) {
-//        return Fraction(*this * d);
-//    }
-//
-//    Fraction Fraction::operator/(const double &d) {
-//        return Fraction(*this / d);
-//    }
-//
-//    Fraction Fraction::operator+(const int& i) {
-//        return Fraction(*this + i);
-//    }
-//
-//    Fraction Fraction::operator-(const int& i) {
-//        return Fraction(*this - i);
-//    }
-//
-//    Fraction Fraction::operator*(const int& i) {
-//        return Fraction(*this * i);
-//    }
-//
-//    Fraction Fraction::operator/(const int& i) {
-//        return Fraction(*this / i);
-//    }
 
     Fraction operator+(const double &d, const Fraction &frac) {
         return Fraction(d) + frac;
@@ -136,7 +120,7 @@ namespace ariel{
     Fraction operator/(const int &i, const Fraction &frac) {
         return Fraction(i) / frac;
     }
-
+//
     Fraction operator+(const Fraction &frac, const double &d) {
         return frac + Fraction(d);
     }
@@ -156,11 +140,11 @@ namespace ariel{
     Fraction operator+(const Fraction &frac, const int &i) {
         return frac + Fraction(i);
     }
-
+//
     Fraction operator-(const Fraction &frac, const int &i) {
         return frac - Fraction(i);
     }
-
+//
     Fraction operator*(const Fraction &frac, const int &i) {
         return frac * Fraction(i);
     }
@@ -309,7 +293,7 @@ namespace ariel{
         return d >= frac.operator double();
     }
 
-    bool operator<=(const double& d, const Fraction& frac){
+    bool operator<=(const double & d, const Fraction& frac){
         return d <= frac.operator double();
     }
 
@@ -385,5 +369,105 @@ namespace ariel{
 
     Fraction::operator string() const {
         return to_string(numerator) + "/" + to_string(denominator);
+    }
+
+    template<typename T>
+    bool operator<=(const T &type, const Fraction &frac) {
+        return type <= frac.operator double();
+    }
+
+    template<typename T>
+    bool operator>=(const T &type, const Fraction &frac) {
+        return type >= frac.operator double();
+    }
+
+    template<typename T>
+    bool operator!=(const T &type, const Fraction &frac) {
+        return type != frac.operator double();
+    }
+
+    template<typename T>
+    bool operator==(const T &type, const Fraction &frac) {
+        return type == frac.operator double();
+    }
+
+    template<typename T>
+    bool operator<(const T &type, const Fraction &frac) {
+        return type < frac.operator double();
+    }
+
+    template<typename T>
+    bool operator>(const T &type, const Fraction &frac) {
+        return type > frac.operator double();
+    }
+
+    template<typename T>
+    bool operator<=(const Fraction &frac, const T &type) {
+        return frac.operator double() <= type;
+    }
+
+    template<typename T>
+    bool operator>=(const Fraction &frac, const T &type) {
+        return frac.operator double() >= type;
+    }
+
+    template<typename T>
+    bool operator!=(const Fraction &frac, const T &type) {
+        return frac.operator double() != type;
+    }
+
+    template<typename T>
+    bool operator==(const Fraction &frac, const T &type) {
+        return frac.operator double() == type;
+    }
+
+    template<typename T>
+    bool operator<(const Fraction &frac, const T &type) {
+        return frac.operator double() < type;
+    }
+
+    template<typename T>
+    bool operator>(const Fraction &frac, const T &type) {
+        return frac.operator double() > type;
+    }
+
+    template<typename T>
+    Fraction operator+(const T &type, const Fraction &frac) {
+        return Fraction(type) + frac;
+    }
+
+    template<typename T>
+    Fraction operator-(const T &type, const Fraction &frac) {
+        return Fraction(type) - frac;
+    }
+
+    template<typename T>
+    Fraction operator*(const T &type, const Fraction &frac) {
+        return Fraction(type) * frac;
+    }
+
+    template<typename T>
+    Fraction operator/(const T &type, const Fraction &frac) {
+        return Fraction(type) / frac;
+    }
+
+    template<typename T>
+    Fraction operator/(const Fraction &frac, const T &type) {
+        return frac / Fraction(type);
+    }
+
+    template<typename T>
+    Fraction operator*(const Fraction &frac, const T &type) {
+        return frac * Fraction(type);
+    }
+
+    template<typename T>
+    Fraction operator-(const Fraction &frac, const T &type) {
+        return frac - Fraction(type);
+    }
+
+    template<typename T>
+    Fraction operator+(const Fraction &frac, const T &type) {
+        return frac + Fraction(type);
     }
 }
