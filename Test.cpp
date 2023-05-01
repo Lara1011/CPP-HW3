@@ -178,7 +178,6 @@ TEST_CASE("== operator"){
     CHECK(f == Fraction {77, 21});
     CHECK(f == Fraction {88, 24});
     CHECK(f == Fraction {99, 27});
-    cout << f.operator double() << " " << 11.0/3.0 << "\n";
     CHECK(f.operator double() == 11.0/3.0);
 }
 
